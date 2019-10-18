@@ -12,6 +12,6 @@ A particle simulation engine.
 2. make run
 
 ## Dependencies:
-* tcc, the tiny c compiler. You can also use gcc, you only have to change tcc to gcc in the Makefile.
+* A c-compiler.
 * make
 * termbox
