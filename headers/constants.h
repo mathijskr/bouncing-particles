@@ -9,4 +9,6 @@
 
 #define GRAVITY 9.8f
 
+#define GROUND_FRICTION 1.0f
+
 #endif

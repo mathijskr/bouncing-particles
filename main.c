@@ -1,6 +1,7 @@
 #include "main.h"
 
 int GROUND;
+int WALL;
 bool EXIT = false;
 
 int simulation_step = 0;
@@ -31,13 +32,14 @@ int main(int argv, char **argc){
 	tb_clear();
 
 	GROUND = tb_height() - 1;
+	WALL = tb_width() - 1;
 
 	struct tb_event ev;
 
 	Particle particles[PARTICLE_COUNT];
 
 	for(int i = 0; i < PARTICLE_COUNT; i++)
-		particle__init(&particles[i], 10.0f + 5.0f * i, 0.0f, 0.8f - i / 100.0f, '*', TB_GREEN);
+		particle__init(&particles[i], 10.0f + 5.0f * i, 0.0f, i, 0.0f, 0.8f - i / 100.0f, '*', TB_GREEN);
 
 	pthread_t timer_thread;
 	pthread_create(&timer_thread, NULL, timer, NULL);
@@ -59,7 +61,7 @@ int main(int argv, char **argc){
 			if(simulation_step != 1) { printf("Simulation speed to quick"); }
 
 			for(int i = 0; i < PARTICLE_COUNT; i++)
-				particle__update(&particles[i], GRAVITY * SIMULATION_SPEED, GROUND);
+				particle__update(&particles[i], GRAVITY * SIMULATION_SPEED, GROUND, WALL);
 
 			simulation_step = 0;
 		}
