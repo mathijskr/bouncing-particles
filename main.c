@@ -34,8 +34,10 @@ int main(int argv, char **argc){
 
 	struct tb_event ev;
 
-	Particle testParticle;
-	particle__init(&testParticle, 10.0f, 0.0f, 0.8f, '*', TB_GREEN);
+	Particle particles[PARTICLE_COUNT];
+
+	for(int i = 0; i < PARTICLE_COUNT; i++)
+		particle__init(&particles[i], 10.0f + 5.0f * i, 0.0f, 0.8f - i / 100.0f, '*', TB_GREEN);
 
 	pthread_t timer_thread;
 	pthread_create(&timer_thread, NULL, timer, NULL);
@@ -55,11 +57,15 @@ int main(int argv, char **argc){
 		/* Update the simulation. */
 		if(simulation_step > 0) {
 			if(simulation_step != 1) { printf("Simulation speed to quick"); }
-			particle__update(&testParticle, GRAVITY * SIMULATION_SPEED, GROUND);
+
+			for(int i = 0; i < PARTICLE_COUNT; i++)
+				particle__update(&particles[i], GRAVITY * SIMULATION_SPEED, GROUND);
+
 			simulation_step = 0;
 		}
 
-		particle__draw(&testParticle);
+		for(int i = 0; i < PARTICLE_COUNT; i++)
+			particle__draw(&particles[i]);
 
 		/* Draw to screen. */
 		tb_present();
