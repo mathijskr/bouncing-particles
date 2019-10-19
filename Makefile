@@ -5,8 +5,11 @@ OUT=simulate
 INCLUDE=-I ../termbox/src/ -I headers/
 OBJS=./out/termbox.o ./out/utf8.o ./out/particle.o ./out/main.o
 
-$(OUT): $(OBJS)
+$(OUT): $(OBJS) ./out
 	$(CC) $(FLAGS) $(LIBS) $(INCLUDE) -o $(OUT) $(OBJS) 
+
+./out:
+	mkdir ./out
 
 ./out/termbox.o: ../termbox/src/termbox.c 
 	$(CC) $(FLAGS) $(INCLUDE) -o ./out/termbox.o -c ../termbox/src/termbox.c 
