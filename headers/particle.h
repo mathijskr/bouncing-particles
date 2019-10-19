@@ -27,4 +27,6 @@ void particle__update(Particle *this, float gravity, int ground, int WALL);
 /* Draw a particle at it's x, y position. */
 void particle__draw(Particle *this);
 
+void particle__collisions(Particle *particles, int par);
+
 #endif

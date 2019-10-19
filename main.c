@@ -16,13 +16,15 @@ void *timer() {
 		nanosleep(&tim, &tim2);
 		simulation_step++;
 	}
+
+	return &EXIT;
 }
 
-int main(int argv, char **argc){
+int main(int argv, char **argc) {
 	int code = tb_init();
 
 	/* Check if termbox was initialized. */
-	if(code < 0){
+	if(code < 0) {
 		fprintf(stderr, "termbox init failed, code: %d\n", code);
 		return -1;
 	}
@@ -39,7 +41,7 @@ int main(int argv, char **argc){
 	Particle particles[PARTICLE_COUNT];
 
 	for(int i = 0; i < PARTICLE_COUNT; i++)
-		particle__init(&particles[i], 10.0f + 5.0f * i, 0.0f, i, 0.0f, 0.8f - i / 100.0f, '*', TB_GREEN);
+		particle__init(&particles[i], 10.0f + 5.0f * i, 0.0f, i, 0.0f, 0.95f - i / 100.0f, 'a' + i, TB_GREEN);
 
 	pthread_t timer_thread;
 	pthread_create(&timer_thread, NULL, timer, NULL);
@@ -59,6 +61,10 @@ int main(int argv, char **argc){
 		/* Update the simulation. */
 		if(simulation_step > 0) {
 			if(simulation_step != 1) { printf("Simulation speed to quick"); }
+
+			/* Collision detection. */
+			for(int i = 0; i < PARTICLE_COUNT; i++)
+				particle__collisions(particles, i);
 
 			for(int i = 0; i < PARTICLE_COUNT; i++)
 				particle__update(&particles[i], GRAVITY * SIMULATION_SPEED, GROUND, WALL);
