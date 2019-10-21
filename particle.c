@@ -12,13 +12,19 @@ void particle__init(Particle *this, float x, float y, float vx, float vy, float 
 	this->ay = 0.0f;
 }
 
-void particle__collisions(Particle *particles, int par) {
+/*void particle__collisions(Particle *particles, int par) {
 	for(int i = par; i < PARTICLE_COUNT; i++) {
 		if(((particles[par].x - particles[i].x) * (particles[par].x - particles[i].x) <= 1.0f) &&
 		   ((particles[par].y - particles[i].y) * (particles[par].y - particles[i].y) <= 1.0f)) {
+			float buffer_vx = particles[par].vx;
+			float buffer_vy = particles[par].vy;
+			particles[par].vx = particles[i].vx;
+			particles[par].vy = particles[i].vy;
+			particles[i].vx = buffer_vx;
+			particles[i].vy = buffer_vy;
 		}
 	}
-}
+}*/
 
 void particle__update(Particle *this, float gravity, int ground, int wall) {
 	this->ay = gravity;

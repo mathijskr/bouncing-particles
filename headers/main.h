@@ -12,4 +12,9 @@
 #include "constants.h"
 #include "particle.h"
 
+#define SIMULATION_SPEED 10
+#define DRAW_SPEED 16
+
+void *timer();
+
 #endif

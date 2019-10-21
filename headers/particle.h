@@ -3,7 +3,7 @@
 
 #include "constants.h"
 
-#define PARTICLE_COUNT 5
+#define PARTICLE_COUNT 50
 
 typedef struct Particle Particle;
 
@@ -27,6 +27,6 @@ void particle__update(Particle *this, float gravity, int ground, int WALL);
 /* Draw a particle at it's x, y position. */
 void particle__draw(Particle *this);
 
-void particle__collisions(Particle *particles, int par);
+//void particle__collisions(Particle *particles, int par);
 
 #endif
