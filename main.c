@@ -29,7 +29,7 @@ int main(int argv, char **argc)
 	Particle particles[PARTICLE_COUNT];
 
 	for(int i = 0; i < PARTICLE_COUNT; i++)
-		particle__init(&particles[i], 0.0f + 0.8f * i, 0.0f, 0.1f, 0.0f, 0.95f - 0.001f * i, '*', TB_GREEN);
+		particle__init(&particles[i], 0.0f + 0.8f * i, 0.0f + 0.2f * i, 0.1f, 0.0f, 0.95f, '*', TB_GREEN);
 
 	pthread_t timer_thread;
 	pthread_create(&timer_thread, NULL, timer, NULL);
