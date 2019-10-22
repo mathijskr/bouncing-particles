@@ -1,4 +1,4 @@
-# particle-physics
+# bouncing-particles
 A particle simulation engine. Watch characters bounce across your terminal.
 
 ## How to install:
