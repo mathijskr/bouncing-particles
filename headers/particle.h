@@ -3,7 +3,7 @@
 
 #include "constants.h"
 
-#define PARTICLE_COUNT 100
+#define PARTICLE_COUNT 30
 
 typedef struct Particle Particle;
 
