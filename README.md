@@ -1,5 +1,5 @@
 # particle-physics
-A particle simulation engine.
+A particle simulation engine. Watch characters bounce across your terminal.
 
 ## How to install:
 1. Install termbox development files. (For Void Linux: xbps-install termbox-devel)
