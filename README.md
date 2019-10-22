@@ -2,7 +2,7 @@
 A particle simulation engine.
 
 ## How to install:
-1. git clone https://github.com/nsf/termbox
+1. Install termbox development files. (For Void Linux: xbps-install termbox-devel)
 2. git clone https://github.com/mathijskr/particle-physics
 3. cd particle-physics
 4. make
@@ -13,5 +13,5 @@ A particle simulation engine.
 
 ## Dependencies:
 * A c-compiler.
-* make
-* termbox
+* GNU Make
+* Termbox development files.
