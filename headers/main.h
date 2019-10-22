@@ -12,8 +12,8 @@
 #include "constants.h"
 #include "particle.h"
 
-#define SIMULATION_SPEED 10
-#define DRAW_SPEED 16
+#define SIMULATION_SPEED 10 // Must be at least 10
+#define DRAW_SPEED 16 // 16 := 60 fps
 
 void *timer();
 

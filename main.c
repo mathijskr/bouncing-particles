@@ -29,7 +29,7 @@ int main(int argv, char **argc)
 	Particle particles[PARTICLE_COUNT];
 
 	for(int i = 0; i < PARTICLE_COUNT; i++)
-		particle__init(&particles[i], 0.0f + 5.0f * i, i, 0.1f, 0.0f, 0.95f - 0.002f * i, '*', TB_GREEN + 1);
+		particle__init(&particles[i], 0.0f + 5.0f * i, i, 0.1f, 0.0f, 0.95f - 0.005f * i, '*', TB_GREEN + 1);
 
 	pthread_t timer_thread;
 	pthread_create(&timer_thread, NULL, timer, NULL);
@@ -55,6 +55,9 @@ int main(int argv, char **argc)
 
 			for(int i = 0; i < PARTICLE_COUNT; i++)
 				particle__update(&particles[i], GRAVITY / (1000.0f / SIMULATION_SPEED), GROUND, WALL);
+
+			/* Increase time to ensure that the simulation won't be updated more than once. */
+			elapsed_time++;
 		}
 
 		/* Draw. */
@@ -64,6 +67,9 @@ int main(int argv, char **argc)
 
 			/* Draw to screen. */
 			tb_present();
+
+			/* Increase time to ensure that the simulation won't be drawn more than once. */
+			elapsed_time++;
 		}
 
 		/* Update input with a timeout of n ms. */
@@ -88,7 +94,7 @@ void *timer()
 		nanosleep(&tim, &tim2);
 		elapsed_time++;
 
-		if(elapsed_time > 160)
+		if(elapsed_time == 160)
 			elapsed_time = 0;
 	}
 
