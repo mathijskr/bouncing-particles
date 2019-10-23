@@ -6,12 +6,12 @@ A particle simulation engine. Watch characters bounce across your terminal.
 * Void Linux: xbps-install termbox-devel
 * Debian based distros: apt install libtermbox-dev 
 * Arch based distros: There is no package for termbox yet on Arch based distros, so you have to build termbox yourself.
-2. git clone https://github.com/mathijskr/particle-physics
-3. cd particle-physics
+2. git clone https://github.com/mathijskr/bouncing-particles
+3. cd bouncing-particles
 4. make
 
 ## How to run:
-1. cd particle-physics
+1. cd bouncing-particles
 2. make run
 
 ## Dependencies:
